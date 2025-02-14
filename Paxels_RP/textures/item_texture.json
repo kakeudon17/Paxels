@@ -1,0 +1,9 @@
+{
+    "resource_pack_name": "items",
+    "texture_name": "atlas.items",
+    "texture_data": {
+        "netherite_paxel": {
+            "textures": "textures/items/netherite_paxel.png"
+        }
+    }
+}

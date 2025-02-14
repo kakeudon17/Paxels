@@ -1,0 +1,41 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:item": {
+        "description": {
+            "identifier": "paxel:wooden_paxel",
+            "menu_category": {
+                "category": "equipment",
+                "group": "itemGroup.name.pickaxe"
+            }
+        },
+        "components": {
+            "minecraft:max_stack_size": 1,
+            "minecraft:hand_equipped": true,
+            "minecraft:icon": "netherite_paxel",
+            "minecraft:allow_off_hand": false,
+            "minecraft:enchantable": {
+                "slot": "axe",
+                "value": 15
+            },
+            "minecraft:digger": {
+                "use_efficiency": true,
+                "destroy_speeds": [
+                    {
+                        "speed": 2,
+                        "block": {
+                            "tags": "query.any_tag('minecraft:is_pickaxe_item_destructible','minecraft:is_shovel_item_destructible','minecraft:is_axe_item_destructible')"
+                        }
+                    }
+                ]
+            },
+            "minecraft:durability": {
+                "max_durability": 88
+            },
+            "minecraft:display_name": {
+                "value": "paxel:wooden_paxel.name"
+            },
+            "minecraft:damage": 4,
+            "minecraft:custom_components": ["paxel:use"]
+        }
+    }
+}

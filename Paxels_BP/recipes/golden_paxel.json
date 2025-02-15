@@ -1,0 +1,33 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "paxel:golden_paxel"
+        },
+        "tags": ["crafting_table"],
+        "pattern": ["ABC", " D", " D "],
+        "key": {
+            "A": {
+                "item": "minecraft:golden_axe"
+            },
+            "B": {
+                "item": "minecraft:golden_pickaxe"
+            },
+            "C": {
+                "item": "minecraft:golden_shovel"
+            },
+            "D": {
+                "item": "minecraft:stick"
+            }
+        },
+        "result": {
+            "item": "paxel:golden_paxel",
+            "count": 1
+        },
+        "unlock": [
+            {
+                "item": "minecraft:gold_ingot"
+            }
+        ]
+    }
+}

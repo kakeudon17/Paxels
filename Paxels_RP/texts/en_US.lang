@@ -1,2 +1,7 @@
 pack.description=This pack adds Paxel.
+paxel:wooden_paxel.name=Wooden Paxel
+paxel:stone_paxel.name=Stone Paxel
+paxel:iron_paxel.name=Iron Paxel
+paxel:golden_paxel.name=Golden Paxel
+paxel:diamond_paxel.name=Diamond Paxel
 paxel:netherite_paxel.name=Netherite Paxel

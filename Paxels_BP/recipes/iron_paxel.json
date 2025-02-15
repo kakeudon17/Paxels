@@ -1,0 +1,33 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "paxel:iron_paxel"
+        },
+        "tags": ["crafting_table"],
+        "pattern": ["ABC", " D", " D "],
+        "key": {
+            "A": {
+                "item": "minecraft:iron_axe"
+            },
+            "B": {
+                "item": "minecraft:iron_pickaxe"
+            },
+            "C": {
+                "item": "minecraft:iron_shovel"
+            },
+            "D": {
+                "item": "minecraft:stick"
+            }
+        },
+        "result": {
+            "item": "paxel:iron_paxel",
+            "count": 1
+        },
+        "unlock": [
+            {
+                "item": "minecraft:iron_ingot"
+            }
+        ]
+    }
+}

@@ -26,13 +26,7 @@
         },
         "unlock": [
             {
-                "item": "minecraft:netherite_axe"
-            },
-            {
-                "item": "minecraft:netherite_pickaxe"
-            },
-            {
-                "item": "minecraft:netherite_shovel"
+                "item": "minecraft:netherite_ingot"
             }
         ]
     }

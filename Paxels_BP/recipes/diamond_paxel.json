@@ -1,0 +1,33 @@
+{
+    "format_version": "1.21.10",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "paxel:diamond_paxel"
+        },
+        "tags": ["crafting_table"],
+        "pattern": ["ABC", " D", " D "],
+        "key": {
+            "A": {
+                "item": "minecraft:diamond_axe"
+            },
+            "B": {
+                "item": "minecraft:diamond_pickaxe"
+            },
+            "C": {
+                "item": "minecraft:diamond_shovel"
+            },
+            "D": {
+                "item": "minecraft:stick"
+            }
+        },
+        "result": {
+            "item": "paxel:diamond_paxel",
+            "count": 1
+        },
+        "unlock": [
+            {
+                "item": "minecraft:diamond"
+            }
+        ]
+    }
+}

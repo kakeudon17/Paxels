@@ -45,15 +45,28 @@ function decreaseDurability(player) {
 
     if (!item?.hasTag("paxel:durability")) return;
 
-    const durability = item.getComponent("durability");
-    durability.damage += 1;
+    let level = item.getComponent("minecraft:enchantable")?.getEnchantment("unbreaking")?.level;
 
-    if (durability.damage >= durability.maxDurability) {
-        player.playSound("random.break");
-        slot.setItem();
-    } else {
-        slot.setItem(item);
+    function durability() {
+        const durability = item.getComponent("durability");
+        const t = Math.floor(Math.random() * 100);
+
+        if (t < durability.getDamageChance()) {
+            durability.damage += 1;
+            if (durability.damage >= durability.maxDurability) {
+                player.playSound("random.break");
+                slot.setItem();
+            } else {
+                slot.setItem(item);
+            }
+        }
     }
+
+    if (level > 0) {
+        const chance = Math.random();
+        if (chance < level / (level + 1)) return;
+    }
+    durability();
 }
 
 world.beforeEvents.worldInitialize.subscribe(({ itemComponentRegistry }) => {

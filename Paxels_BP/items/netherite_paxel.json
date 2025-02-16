@@ -31,7 +31,7 @@
                 "max_durability": 3046
             },
             "minecraft:display_name": {
-                "value": "paxel:netherite_paxel.name"
+                "value": "paxels:netherite_paxel.name"
             },
             "minecraft:damage": 8,
             "minecraft:custom_components": ["paxel:use"],

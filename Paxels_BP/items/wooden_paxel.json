@@ -37,7 +37,7 @@
                 "max_durability": 88
             },
             "minecraft:display_name": {
-                "value": "paxel:wooden_paxel.name"
+                "value": "paxels:wooden_paxel.name"
             },
             "minecraft:damage": 4,
             "minecraft:custom_components": ["paxel:use"],

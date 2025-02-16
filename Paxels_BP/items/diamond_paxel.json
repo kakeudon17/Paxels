@@ -31,7 +31,7 @@
                 "max_durability": 2341
             },
             "minecraft:display_name": {
-                "value": "paxel:diamond_paxel.name"
+                "value": "paxels:diamond_paxel.name"
             },
             "minecraft:damage": 7,
             "minecraft:custom_components": ["paxel:use"],

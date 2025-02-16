@@ -37,7 +37,7 @@
                 "max_durability": 375
             },
             "minecraft:display_name": {
-                "value": "paxel:iron_paxel.name"
+                "value": "paxels:iron_paxel.name"
             },
             "minecraft:damage": 6,
             "minecraft:custom_components": ["paxel:use"],

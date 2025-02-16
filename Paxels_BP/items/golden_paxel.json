@@ -37,7 +37,7 @@
                 "max_durability": 48
             },
             "minecraft:display_name": {
-                "value": "paxel:golden_paxel.name"
+                "value": "paxels:golden_paxel.name"
             },
             "minecraft:damage": 4,
             "minecraft:custom_components": ["paxel:use"],

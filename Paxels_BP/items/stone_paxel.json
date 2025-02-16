@@ -37,7 +37,7 @@
                 "max_durability": 194
             },
             "minecraft:display_name": {
-                "value": "paxel:stone_paxel.name"
+                "value": "paxels:stone_paxel.name"
             },
             "minecraft:damage": 5,
             "minecraft:custom_components": ["paxel:use"],

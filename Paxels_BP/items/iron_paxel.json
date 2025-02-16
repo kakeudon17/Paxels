@@ -2,7 +2,7 @@
     "format_version": "1.21.10",
     "minecraft:item": {
         "description": {
-            "identifier": "paxel:iron_paxel",
+            "identifier": "paxels:iron_paxel",
             "menu_category": {
                 "category": "equipment",
                 "group": "itemGroup.name.pickaxe"

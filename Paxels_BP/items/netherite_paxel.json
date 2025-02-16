@@ -2,7 +2,7 @@
     "format_version": "1.21.10",
     "minecraft:item": {
         "description": {
-            "identifier": "paxel:netherite_paxel",
+            "identifier": "paxels:netherite_paxel",
             "menu_category": {
                 "category": "equipment",
                 "group": "itemGroup.name.pickaxe"

@@ -2,7 +2,7 @@
     "format_version": "1.21.10",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "paxel:wooden_paxel"
+            "identifier": "paxels:wooden_paxel"
         },
         "tags": ["crafting_table"],
         "pattern": ["ABC", " D", " D "],
@@ -21,7 +21,7 @@
             }
         },
         "result": {
-            "item": "paxel:wooden_paxel",
+            "item": "paxels:wooden_paxel",
             "count": 1
         },
         "unlock": [

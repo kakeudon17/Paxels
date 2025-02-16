@@ -2,7 +2,7 @@
     "format_version": "1.21.10",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "paxel:stone_paxel"
+            "identifier": "paxels:stone_paxel"
         },
         "tags": ["crafting_table"],
         "pattern": ["ABC", " D", " D "],
@@ -21,7 +21,7 @@
             }
         },
         "result": {
-            "item": "paxel:stone_paxel",
+            "item": "paxels:stone_paxel",
             "count": 1
         },
         "unlock": [

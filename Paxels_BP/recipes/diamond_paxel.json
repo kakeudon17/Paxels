@@ -2,7 +2,7 @@
     "format_version": "1.21.10",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "paxel:diamond_paxel"
+            "identifier": "paxels:diamond_paxel"
         },
         "tags": ["crafting_table"],
         "pattern": ["ABC", " D", " D "],
@@ -21,7 +21,7 @@
             }
         },
         "result": {
-            "item": "paxel:diamond_paxel",
+            "item": "paxels:diamond_paxel",
             "count": 1
         },
         "unlock": [

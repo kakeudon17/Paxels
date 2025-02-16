@@ -20,27 +20,21 @@
                 "use_efficiency": true,
                 "destroy_speeds": [
                     {
-                        "speed": 12,
-                        "block": {
-                            "tags": "query.any_tag('minecraft:requires_iron_tool', 'minecraft:requires_diamond_tool')"
-                        }
-                    },
-                    {
-                        "speed": 12,
-                        "block": {
-                            "tags": "query.any_tag('minecraft:is_axe_item_destructible', 'minecraft:is_pickaxe_item_destructible', 'minecraft:is_shovel_item_destructible')"
-                        }
-                    },
-                    {
                         "speed": 0,
                         "block": {
-                            "tags": "query.any_tag('minecraft:diamond_pick_diggable')"
+                            "tags": "query.any_tag('minecraft:stone_tier_destructible','minecraft:iron_tier_destructible','minecraft:diamond_tier_destructible')"
+                        }
+                    },
+                    {
+                        "speed": 4,
+                        "block": {
+                            "tags": "query.any_tag('minecraft:is_axe_item_destructible','minecraft:is_pickaxe_item_destructible','minecraft:is_shovel_item_destructible')"
                         }
                     }
                 ]
             },
             "minecraft:durability": {
-                "max_durability": 32
+                "max_durability": 48
             },
             "minecraft:display_name": {
                 "value": "paxel:golden_paxel.name"

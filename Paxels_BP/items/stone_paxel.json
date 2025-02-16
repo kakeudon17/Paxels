@@ -20,6 +20,12 @@
                 "use_efficiency": true,
                 "destroy_speeds": [
                     {
+                        "speed": 0,
+                        "block": {
+                            "tags": "query.any_tag('minecraft:iron_tier_destructible','minecraft:diamond_tier_destructible')"
+                        }
+                    },
+                    {
                         "speed": 4,
                         "block": {
                             "tags": "query.any_tag('minecraft:is_axe_item_destructible','minecraft:is_pickaxe_item_destructible','minecraft:is_shovel_item_destructible')"
@@ -28,7 +34,7 @@
                 ]
             },
             "minecraft:durability": {
-                "max_durability": 131
+                "max_durability": 194
             },
             "minecraft:display_name": {
                 "value": "paxel:stone_paxel.name"

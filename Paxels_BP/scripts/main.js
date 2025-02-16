@@ -31,8 +31,30 @@ const logs = [
     "minecraft:mangrove_wood",
     "minecraft:cherry_wood",
     "minecraft:pale_oak_wood",
-    "minecraft:bamboo_block"];
+    "minecraft:bamboo_block"
+];
 
+function isCreativeMode(player) {
+    return player.matches({ gameMode: "creative" });
+}
+
+function decreaseDurability(player) {
+    const inv = player.getComponent("inventory");
+    const slot = inv.container.getSlot(player.selectedSlotIndex);
+    const item = slot.getItem();
+
+    if (!item?.hasTag("paxel:durability")) return;
+
+    const durability = item.getComponent("durability");
+    durability.damage += 1;
+
+    if (durability.damage >= durability.maxDurability) {
+        player.playSound("random.break");
+        slot.setItem();
+    } else {
+        slot.setItem(item);
+    }
+}
 
 world.beforeEvents.worldInitialize.subscribe(({ itemComponentRegistry }) => {
     itemComponentRegistry.registerCustomComponent("paxel:use", {
@@ -69,60 +91,3 @@ world.afterEvents.playerBreakBlock.subscribe(ev => {
         decreaseDurability(ev.player);
     }
 });
-
-// ゲームモードチェック
-function isCreativeMode(player) {
-    return player.matches({ gameMode: "creative" });
-}
-
-function decreaseDurability(player) {
-    const inv = player.getComponent("inventory");
-    const slot = inv.container.getSlot(player.selectedSlotIndex);
-    const item = slot.getItem();
-
-    if (!item?.hasTag("paxel:durability")) return;
-
-    const durability = item.getComponent("durability");
-    durability.damage += 1;
-
-    if (durability.damage >= durability.maxDurability) {
-        player.playSound("random.break");
-        slot.setItem();
-    } else {
-        slot.setItem(item);
-    }
-}
-
-const Ore = {
-    "stone": ["minecraft:iron_ore", "minecraft:copper_ore", "minecraft:lapis_ore"],
-    "iron": ["minecraft:gold_ore", "minecraft:redstone_ore", "minecraft:lit_redstone_ore", "minecraft:diamond_ore", "minecraft:emerald_ore"],
-    "diamond": ["minecraft:ancient_debris"],
-}
-
-// world.beforeEvents.playerBreakBlock.subscribe(ev => {
-//     const itemId = ev.itemStack.type.id;
-//     const blockId = ev.block.type.id;
-//     const { x, y, z } = ev.block.location;
-
-//     if (itemId === "paxel:wooden_paxel" || itemId === "paxel:golden_paxel") {
-//         if (Ore.stone.includes(blockId) || Ore.iron.includes(blockId) || Ore.diamond.includes(blockId)) {
-//             ev.cancel = true;
-//             ev.player.runCommandAsync(`setblock ${x} ${y} ${z} air`);
-//             ev.player.runCommandAsync(`playsound dig.stone @s ~ ~ ~ 0.8 0.8`);
-//         }
-//     }
-//     else if (itemId === "paxel:stone_paxel") {
-//         if (Ore.iron.includes(blockId) || Ore.diamond.includes(blockId)) {
-//             ev.cancel = true;
-//             ev.player.runCommandAsync(`setblock ${x} ${y} ${z} air`);
-//             ev.player.runCommandAsync(`playsound dig.stone @s ~ ~ ~ 0.8 0.8`);
-//         }
-//     }
-//     else if (itemId === "paxel:iron_paxel") {
-//         if (Ore.diamond.includes(blockId)) {
-//             ev.cancel = true;
-//             ev.player.runCommandAsync(`setblock ${x} ${y} ${z} air`);
-//             ev.player.runCommandAsync(`playsound dig.stone @s ~ ~ ~ 0.8 0.8`);
-//         }
-//     }
-// });

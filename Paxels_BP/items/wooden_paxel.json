@@ -20,21 +20,21 @@
                 "use_efficiency": true,
                 "destroy_speeds": [
                     {
+                        "speed": 0,
                         "block": {
-                            "tags": "q.any_tag('wood', 'stone', 'dirt', 'sand')"
-                        },
-                        "speed": 2
+                            "tags": "query.any_tag('minecraft:stone_tier_destructible','minecraft:iron_tier_destructible','minecraft:diamond_tier_destructible')"
+                        }
                     },
                     {
+                        "speed": 2,
                         "block": {
-                            "tags": "q.any_tag('coal_ore', 'iron_ore', 'copper_ore', 'gold_ore', 'diamond_ore', 'emerald_ore', 'lapis_ore', 'redstone_ore', 'nether_gold_ore', 'nether_quartz_ore', 'ancient_debris')"
-                        },
-                        "speed": 2
+                            "tags": "query.any_tag('minecraft:is_axe_item_destructible','minecraft:is_pickaxe_item_destructible','minecraft:is_shovel_item_destructible')"
+                        }
                     }
                 ]
             },
             "minecraft:durability": {
-                "max_durability": 59
+                "max_durability": 88
             },
             "minecraft:display_name": {
                 "value": "paxel:wooden_paxel.name"

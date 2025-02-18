@@ -5,6 +5,6 @@ Minecraft:v1.21.60
 
 マルチプレイ対応
 
-![Paxels](https://github.com/user-attachments/assets/c38c9ede-243f-4142-bce4-e113e6ff53c1)
+![Paxels](https://github.com/user-attachments/assets/fc9a5aa5-54bb-45b9-8e5e-f86feea0ef7b)
 
 利用規約は、[こちら](LICENSE.md)をご確認ください。

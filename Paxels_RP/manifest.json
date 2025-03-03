@@ -2,10 +2,10 @@
     "format_version": 2,
     "header": {
         "min_engine_version": [1, 21, 10],
-        "name": "Paxels_RP",
+        "name": "Paxels_RP v1.0.1",
         "description": "pack.description",
         "uuid": "79f71935-569f-4446-a955-6ccc654e37ba",
-        "version": [1, 0, 0]
+        "version": [1, 0, 1]
     },
     "modules": [
         {
@@ -17,7 +17,7 @@
     "dependencies": [
         {
             "uuid": "5ba9753c-ccd9-4d87-ae20-a62eddc22903",
-            "version": [1, 0, 0]
+            "version": [1, 0, 1]
         }
     ]
 }

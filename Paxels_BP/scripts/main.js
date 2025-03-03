@@ -85,6 +85,7 @@ world.beforeEvents.worldInitialize.subscribe(({ itemComponentRegistry }) => {
                     actionPerformed = true;
                 }
             }
+
             if (logs.includes(blockId)) {
                 const blockState = block.permutation.getState("pillar_axis");
                 source.runCommandAsync(`setblock ${x} ${y} ${z} minecraft:stripped_${blockId.split(":")[1]} ["pillar_axis"="${blockState}"]`);
@@ -92,6 +93,44 @@ world.beforeEvents.worldInitialize.subscribe(({ itemComponentRegistry }) => {
                 actionPerformed = true;
             }
 
+            if (blockId.includes("copper")) {
+                function changeCopperState(fromState, toState = '', sound = 'scrape') {
+                    if (blockId.includes(fromState)) {
+                        const newBlockId = blockId.replace(fromState, toState);
+                        source.runCommandAsync(`playsound ${sound} @s`);
+                        return newBlockId;
+                    }
+                    return null;
+                }
+
+                function showEffectParticles() {
+                    for (let i = 0; i < 15; i++) {
+                        const offsetX = (Math.random() - 0.5) * 1.5 + 0.5;
+                        const offsetY = Math.random() * 1.5;
+                        const offsetZ = (Math.random() - 0.5) * 1.5 + 0.5;
+                        source.runCommandAsync(`particle minecraft:wax_particle ${x + offsetX} ${y + offsetY} ${z + offsetZ}`);
+                    }
+                }
+
+                let newBlockId = changeCopperState('waxed_', '', 'copper.wax.off') ||
+                    changeCopperState('oxidized_', 'weathered_') ||
+                    changeCopperState('weathered_', 'exposed_') ||
+                    changeCopperState('exposed_', '');
+
+                if (newBlockId) {
+                    actionPerformed = true;
+                    if (blockId === "minecraft:waxed_copper" || blockId === "minecraft:exposed_copper") {
+                        source.runCommandAsync(`setblock ${x} ${y} ${z} copper_block`);
+                    } else {
+                        const blockStates = block.permutation.getAllStates();
+                        const stateString = Object.entries(blockStates)
+                            .map(([key, value]) => `"${key}"=${typeof value === 'string' ? `"${value}"` : value}`)
+                            .join(',');
+                        source.runCommandAsync(`setblock ${x} ${y} ${z} ${newBlockId} [${stateString}]`);
+                    }
+                    showEffectParticles();
+                }
+            }
             if (actionPerformed && !isCreativeMode(source)) {
                 decreaseDurability(source);
             }
@@ -104,3 +143,4 @@ world.afterEvents.playerBreakBlock.subscribe(ev => {
         decreaseDurability(ev.player);
     }
 });
+

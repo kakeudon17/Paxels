@@ -93,6 +93,13 @@ world.beforeEvents.worldInitialize.subscribe(({ itemComponentRegistry }) => {
                 actionPerformed = true;
             }
 
+            if (blockId === "minecraft:snow_layer") {
+                source.runCommandAsync(`loot spawn ${x} ${y} ${z} mine ${x} ${y} ${z} minecraft:iron_shovel`);
+                source.runCommandAsync(`playsound hit.snow @s`);
+                source.runCommandAsync(`setblock ${x} ${y} ${z} air`);
+                actionPerformed = true;
+            }
+
             if (blockId.includes("copper")) {
                 function changeCopperState(fromState, toState = '', sound = 'scrape') {
                     if (blockId.includes(fromState)) {

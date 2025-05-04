@@ -1,0 +1,26 @@
+{
+    "format_version": "1.21.60",
+    "minecraft:crafting_items_catalog": {
+        "categories": [
+            {
+                "category_name": "equipment",
+                "groups": [
+                    {
+                        "group_identifier": {
+                            "name": "paxsls:slot.name",
+                            "icon": "paxels:wooden_paxel"
+                        },
+                        "items": [
+                            "paxels:wooden_paxel",
+                            "paxels:stone_paxel",
+                            "paxels:iron_paxel",
+                            "paxels:golden_paxel",
+                            "paxels:diamond_paxel",
+                            "paxels:netherite_paxel"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

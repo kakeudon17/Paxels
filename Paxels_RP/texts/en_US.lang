@@ -1,6 +1,7 @@
 pack.description=This pack adds Paxel.
 paxels:wooden_paxel.name=Wooden Paxel
 paxels:stone_paxel.name=Stone Paxel
+paxels:copper_paxel.name=Copper Paxel
 paxels:iron_paxel.name=Iron Paxel
 paxels:golden_paxel.name=Golden Paxel
 paxels:diamond_paxel.name=Diamond Paxel

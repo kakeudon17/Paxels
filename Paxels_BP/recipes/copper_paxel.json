@@ -2,31 +2,31 @@
     "format_version": "1.21.90",
     "minecraft:recipe_shaped": {
         "description": {
-            "identifier": "paxels:golden_paxel"
+            "identifier": "paxels:copper_paxel"
         },
         "tags": ["crafting_table"],
         "pattern": ["ABC", " D", " D "],
         "key": {
             "A": {
-                "item": "minecraft:golden_axe"
+                "item": "minecraft:copper_axe"
             },
             "B": {
-                "item": "minecraft:golden_pickaxe"
+                "item": "minecraft:copper_pickaxe"
             },
             "C": {
-                "item": "minecraft:golden_shovel"
+                "item": "minecraft:copper_shovel"
             },
             "D": {
                 "item": "minecraft:stick"
             }
         },
         "result": {
-            "item": "paxels:golden_paxel",
+            "item": "paxels:copper_paxel",
             "count": 1
         },
         "unlock": [
             {
-                "item": "minecraft:gold_ingot"
+                "item": "minecraft:copper_ingot"
             }
         ]
     }

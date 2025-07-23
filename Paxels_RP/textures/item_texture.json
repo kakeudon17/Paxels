@@ -14,6 +14,9 @@
         "iron_paxel": {
             "textures": "textures/items/iron_paxel.png"
         },
+        "copper_paxel": {
+            "textures": "textures/items/copper_paxel.png"
+        },
         "stone_paxel": {
             "textures": "textures/items/stone_paxel.png"
         },

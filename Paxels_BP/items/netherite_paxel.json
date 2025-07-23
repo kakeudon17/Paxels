@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.10",
+    "format_version": "1.21.90",
     "minecraft:item": {
         "description": {
             "identifier": "paxels:netherite_paxel",
@@ -33,7 +33,7 @@
                 "value": "paxels:netherite_paxel.name"
             },
             "minecraft:damage": 8,
-            "minecraft:custom_components": ["paxel:use"],
+            "paxel:use": {},
             "minecraft:tags": {
                 "tags": ["paxel:durability"]
             }

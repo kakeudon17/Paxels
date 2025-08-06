@@ -1,4 +1,4 @@
-import { world } from '@minecraft/server';
+import { system, world } from '@minecraft/server';
 
 const grass_paths = [
     "minecraft:grass_block",
@@ -35,7 +35,7 @@ const logs = [
 ];
 
 function isCreativeMode(player) {
-    return player.matches({ gameMode: "creative" });
+    return player.getGameMode().includes("Creative");
 }
 
 function decreaseDurability(player) {
@@ -69,8 +69,8 @@ function decreaseDurability(player) {
     durability();
 }
 
-world.beforeEvents.worldInitialize.subscribe(({ itemComponentRegistry }) => {
-    itemComponentRegistry.registerCustomComponent("paxel:use", {
+system.beforeEvents.startup.subscribe(ev => {
+    ev.itemComponentRegistry.registerCustomComponent("paxel:use", {
         onUseOn: ({ source, block }) => {
             const blockId = block.type.id;
             const { x, y, z } = block.location;
@@ -80,23 +80,23 @@ world.beforeEvents.worldInitialize.subscribe(({ itemComponentRegistry }) => {
             if (grass_paths.includes(blockId)) {
                 const blockAbove = block.dimension.getBlock({ x, y: y + 1, z });
                 if (!blockAbove || blockAbove.type.id === 'minecraft:air') {
-                    source.runCommandAsync(`setblock ${x} ${y} ${z} minecraft:grass_path`);
-                    source.runCommandAsync(`playsound use.grass @s`);
+                    source.runCommand(`setblock ${x} ${y} ${z} minecraft:grass_path`);
+                    source.runCommand(`playsound use.grass @s`);
                     actionPerformed = true;
                 }
             }
 
             if (logs.includes(blockId)) {
                 const blockState = block.permutation.getState("pillar_axis");
-                source.runCommandAsync(`setblock ${x} ${y} ${z} minecraft:stripped_${blockId.split(":")[1]} ["pillar_axis"="${blockState}"]`);
-                source.runCommandAsync(`playsound use.wood @s`);
+                source.runCommand(`setblock ${x} ${y} ${z} minecraft:stripped_${blockId.split(":")[1]} ["pillar_axis"="${blockState}"]`);
+                source.runCommand(`playsound use.wood @s`);
                 actionPerformed = true;
             }
 
             if (blockId === "minecraft:snow_layer") {
-                source.runCommandAsync(`loot spawn ${x} ${y} ${z} mine ${x} ${y} ${z} minecraft:iron_shovel`);
-                source.runCommandAsync(`playsound hit.snow @s`);
-                source.runCommandAsync(`setblock ${x} ${y} ${z} air`);
+                source.runCommand(`loot spawn ${x} ${y} ${z} mine ${x} ${y} ${z} minecraft:iron_shovel`);
+                source.runCommand(`playsound hit.snow @s`);
+                source.runCommand(`setblock ${x} ${y} ${z} air`);
                 actionPerformed = true;
             }
 
@@ -104,7 +104,7 @@ world.beforeEvents.worldInitialize.subscribe(({ itemComponentRegistry }) => {
                 function changeCopperState(fromState, toState = '', sound = 'scrape') {
                     if (blockId.includes(fromState)) {
                         const newBlockId = blockId.replace(fromState, toState);
-                        source.runCommandAsync(`playsound ${sound} @s`);
+                        source.runCommand(`playsound ${sound} @s`);
                         return newBlockId;
                     }
                     return null;
@@ -115,7 +115,7 @@ world.beforeEvents.worldInitialize.subscribe(({ itemComponentRegistry }) => {
                         const offsetX = (Math.random() - 0.5) * 1.5 + 0.5;
                         const offsetY = Math.random() * 1.5;
                         const offsetZ = (Math.random() - 0.5) * 1.5 + 0.5;
-                        source.runCommandAsync(`particle minecraft:wax_particle ${x + offsetX} ${y + offsetY} ${z + offsetZ}`);
+                        source.runCommand(`particle minecraft:wax_particle ${x + offsetX} ${y + offsetY} ${z + offsetZ}`);
                     }
                 }
 
@@ -127,13 +127,13 @@ world.beforeEvents.worldInitialize.subscribe(({ itemComponentRegistry }) => {
                 if (newBlockId) {
                     actionPerformed = true;
                     if (blockId === "minecraft:waxed_copper" || blockId === "minecraft:exposed_copper") {
-                        source.runCommandAsync(`setblock ${x} ${y} ${z} copper_block`);
+                        source.runCommand(`setblock ${x} ${y} ${z} copper_block`);
                     } else {
                         const blockStates = block.permutation.getAllStates();
                         const stateString = Object.entries(blockStates)
                             .map(([key, value]) => `"${key}"=${typeof value === 'string' ? `"${value}"` : value}`)
                             .join(',');
-                        source.runCommandAsync(`setblock ${x} ${y} ${z} ${newBlockId} [${stateString}]`);
+                        source.runCommand(`setblock ${x} ${y} ${z} ${newBlockId} [${stateString}]`);
                     }
                     showEffectParticles();
                 }
@@ -150,4 +150,3 @@ world.afterEvents.playerBreakBlock.subscribe(ev => {
         decreaseDurability(ev.player);
     }
 });
-

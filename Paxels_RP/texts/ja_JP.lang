@@ -1,6 +1,7 @@
 pack.description=パクセルを追加するパックです。
 paxels:wooden_paxel.name=木のパクセル
 paxels:stone_paxel.name=石のパクセル
+paxels:copper_paxel.name=銅のパクセル
 paxels:iron_paxel.name=鉄のパクセル
 paxels:golden_paxel.name=金のパクセル
 paxels:diamond_paxel.name=ダイヤモンドのパクセル

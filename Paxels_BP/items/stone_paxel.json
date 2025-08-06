@@ -1,5 +1,5 @@
 {
-    "format_version": "1.21.10",
+    "format_version": "1.21.90",
     "minecraft:item": {
         "description": {
             "identifier": "paxels:stone_paxel",
@@ -33,13 +33,13 @@
                 ]
             },
             "minecraft:durability": {
-                "max_durability": 194
+                "max_durability": 196
             },
             "minecraft:display_name": {
                 "value": "paxels:stone_paxel.name"
             },
             "minecraft:damage": 5,
-            "minecraft:custom_components": ["paxel:use"],
+            "paxel:use": {},
             "minecraft:tags": {
                 "tags": ["paxel:durability"]
             }

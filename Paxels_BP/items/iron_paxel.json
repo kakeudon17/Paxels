@@ -41,7 +41,11 @@
             "minecraft:damage": 6,
             "paxel:use": {},
             "minecraft:tags": {
-                "tags": ["paxel:durability"]
+                "tags": [
+                    "paxel:durability",
+                    "minecraft:digger",
+                    "minecraft:iron_tier"
+                ]
             }
         }
     }

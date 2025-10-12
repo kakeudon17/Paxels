@@ -27,7 +27,7 @@
                     {
                         "speed": 12,
                         "block": {
-                            "tags": "query.any_tag('minecraft:is_axe_item_destructible','minecraft:is_pickaxe_item_destructible','minecraft:is_shovel_item_destructible')"
+                            "tags": "query.any_tag('minecraft:mineable_with_pickaxe','minecraft:mineable_with_axe','minecraft:mineable_with_shovel')"
                         }
                     }
                 ]
@@ -41,7 +41,11 @@
             "minecraft:damage": 4,
             "paxel:use": {},
             "minecraft:tags": {
-                "tags": ["paxel:durability"]
+                "tags": [
+                    "paxel:durability",
+                    "minecraft:digger",
+                    "minecraft:golden_tier"
+                ]
             }
         }
     }

@@ -35,7 +35,11 @@
             "minecraft:damage": 8,
             "paxel:use": {},
             "minecraft:tags": {
-                "tags": ["paxel:durability"]
+                "tags": [
+                    "paxel:durability",
+                    "minecraft:digger",
+                    "minecraft:netherite_tier"
+                ]
             }
         }
     }

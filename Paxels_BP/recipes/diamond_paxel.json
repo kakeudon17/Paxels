@@ -25,9 +25,9 @@
             "count": 1
         },
         "unlock": [
-            {
-                "item": "minecraft:diamond"
-            }
+            { "item": "minecraft:diamond_axe" },
+            { "item": "minecraft:diamond_pickaxe" },
+            { "item": "minecraft:diamond_shovel" }
         ]
     }
 }

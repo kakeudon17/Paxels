@@ -13,7 +13,7 @@
             "minecraft:icon": "stone_paxel",
             "minecraft:enchantable": {
                 "slot": "axe",
-                "value": 10
+                "value": 5
             },
             "minecraft:digger": {
                 "use_efficiency": true,
@@ -39,6 +39,18 @@
                 "value": "paxels:stone_paxel.name"
             },
             "minecraft:damage": 5,
+            "minecraft:repairable": {
+                "repair_items": [
+                    {
+                        "items": [
+                            {
+                                "tags": "query.any_tag('minecraft:stone_tool_materials')"
+                            }
+                        ],
+                        "repair_amount": "query.max_durability * 0.25"
+                    }
+                ]
+            },
             "paxel:use": {},
             "minecraft:tags": {
                 "tags": [

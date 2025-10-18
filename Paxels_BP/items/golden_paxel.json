@@ -13,7 +13,7 @@
             "minecraft:icon": "golden_paxel",
             "minecraft:enchantable": {
                 "slot": "axe",
-                "value": 10
+                "value": 22
             },
             "minecraft:digger": {
                 "use_efficiency": true,
@@ -27,7 +27,7 @@
                     {
                         "speed": 12,
                         "block": {
-                            "tags": "query.any_tag('minecraft:mineable_with_pickaxe','minecraft:mineable_with_axe','minecraft:mineable_with_shovel')"
+                            "tags": "query.any_tag('minecraft:is_axe_item_destructible','minecraft:is_pickaxe_item_destructible','minecraft:is_shovel_item_destructible')"
                         }
                     }
                 ]
@@ -39,6 +39,14 @@
                 "value": "paxels:golden_paxel.name"
             },
             "minecraft:damage": 4,
+            "minecraft:repairable": {
+                "repair_items": [
+                    {
+                        "items": ["minecraft:gold_ingot"],
+                        "repair_amount": "query.max_durability * 0.25"
+                    }
+                ]
+            },
             "paxel:use": {},
             "minecraft:tags": {
                 "tags": [

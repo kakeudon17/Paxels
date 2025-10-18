@@ -25,9 +25,9 @@
             "count": 1
         },
         "unlock": [
-            {
-                "item": "minecraft:cobblestone"
-            }
+            { "item": "minecraft:stone_axe" },
+            { "item": "minecraft:stone_pickaxe" },
+            { "item": "minecraft:stone_shovel" }
         ]
     }
 }

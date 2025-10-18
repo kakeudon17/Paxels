@@ -25,9 +25,9 @@
             "count": 1
         },
         "unlock": [
-            {
-                "item": "minecraft:stick"
-            }
+            { "item": "minecraft:wooden_axe" },
+            { "item": "minecraft:wooden_pickaxe" },
+            { "item": "minecraft:wooden_shovel" }
         ]
     }
 }

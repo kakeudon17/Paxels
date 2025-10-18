@@ -100,7 +100,7 @@ system.beforeEvents.startup.subscribe(ev => {
                 actionPerformed = true;
             }
 
-            if (blockId.includes("copper")) {
+            if (blockId.includes("copper") || blockId.includes("lightning_rod")) {
                 function changeCopperState(fromState, toState = '', sound = 'scrape') {
                     if (blockId.includes(fromState)) {
                         const newBlockId = blockId.replace(fromState, toState);

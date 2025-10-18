@@ -13,7 +13,7 @@
             "minecraft:icon": "iron_paxel",
             "minecraft:enchantable": {
                 "slot": "axe",
-                "value": 10
+                "value": 14
             },
             "minecraft:digger": {
                 "use_efficiency": true,
@@ -39,9 +39,21 @@
                 "value": "paxels:iron_paxel.name"
             },
             "minecraft:damage": 6,
+            "minecraft:repairable": {
+                "repair_items": [
+                    {
+                        "items": ["minecraft:iron_ingot"],
+                        "repair_amount": "query.max_durability * 0.25"
+                    }
+                ]
+            },
             "paxel:use": {},
             "minecraft:tags": {
-                "tags": ["paxel:durability"]
+                "tags": [
+                    "paxel:durability",
+                    "minecraft:digger",
+                    "minecraft:iron_tier"
+                ]
             }
         }
     }

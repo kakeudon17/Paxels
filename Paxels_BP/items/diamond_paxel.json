@@ -33,9 +33,21 @@
                 "value": "paxels:diamond_paxel.name"
             },
             "minecraft:damage": 7,
+            "minecraft:repairable": {
+                "repair_items": [
+                    {
+                        "items": ["minecraft:diamond"],
+                        "repair_amount": "query.max_durability * 0.25"
+                    }
+                ]
+            },
             "paxel:use": {},
             "minecraft:tags": {
-                "tags": ["paxel:durability"]
+                "tags": [
+                    "paxel:durability",
+                    "minecraft:digger",
+                    "minecraft:diamond_tier"
+                ]
             }
         }
     }

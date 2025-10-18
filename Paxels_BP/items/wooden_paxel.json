@@ -13,7 +13,7 @@
             "minecraft:icon": "wood_paxel",
             "minecraft:enchantable": {
                 "slot": "axe",
-                "value": 10
+                "value": 15
             },
             "minecraft:digger": {
                 "use_efficiency": true,
@@ -39,9 +39,25 @@
                 "value": "paxels:wooden_paxel.name"
             },
             "minecraft:damage": 4,
+            "minecraft:repairable": {
+                "repair_items": [
+                    {
+                        "items": [
+                            {
+                                "tags": "query.any_tag('minecraft:planks')"
+                            }
+                        ],
+                        "repair_amount": "query.max_durability * 0.25"
+                    }
+                ]
+            },
             "paxel:use": {},
             "minecraft:tags": {
-                "tags": ["paxel:durability"]
+                "tags": [
+                    "paxel:durability",
+                    "minecraft:digger",
+                    "minecraft:wooden_tier"
+                ]
             }
         }
     }

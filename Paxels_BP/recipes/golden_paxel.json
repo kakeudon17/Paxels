@@ -25,9 +25,9 @@
             "count": 1
         },
         "unlock": [
-            {
-                "item": "minecraft:gold_ingot"
-            }
+            { "item": "minecraft:golden_axe" },
+            { "item": "minecraft:golden_pickaxe" },
+            { "item": "minecraft:golden_shovel" }
         ]
     }
 }

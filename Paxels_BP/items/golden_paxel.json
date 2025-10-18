@@ -13,7 +13,7 @@
             "minecraft:icon": "golden_paxel",
             "minecraft:enchantable": {
                 "slot": "axe",
-                "value": 10
+                "value": 22
             },
             "minecraft:digger": {
                 "use_efficiency": true,
@@ -39,9 +39,21 @@
                 "value": "paxels:golden_paxel.name"
             },
             "minecraft:damage": 4,
+            "minecraft:repairable": {
+                "repair_items": [
+                    {
+                        "items": ["minecraft:gold_ingot"],
+                        "repair_amount": "query.max_durability * 0.25"
+                    }
+                ]
+            },
             "paxel:use": {},
             "minecraft:tags": {
-                "tags": ["paxel:durability"]
+                "tags": [
+                    "paxel:durability",
+                    "minecraft:digger",
+                    "minecraft:golden_tier"
+                ]
             }
         }
     }

@@ -27,12 +27,12 @@
                 ]
             },
             "minecraft:durability": {
-                "max_durability": 3046
+                "max_durability": 4062
             },
             "minecraft:display_name": {
                 "value": "paxels:netherite_paxel.name"
             },
-            "minecraft:damage": 8,
+            "minecraft:damage": 7,
             "minecraft:repairable": {
                 "repair_items": [
                     {

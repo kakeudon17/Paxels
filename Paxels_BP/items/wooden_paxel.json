@@ -33,12 +33,12 @@
                 ]
             },
             "minecraft:durability": {
-                "max_durability": 88
+                "max_durability": 118
             },
             "minecraft:display_name": {
                 "value": "paxels:wooden_paxel.name"
             },
-            "minecraft:damage": 4,
+            "minecraft:damage": 3,
             "minecraft:repairable": {
                 "repair_items": [
                     {

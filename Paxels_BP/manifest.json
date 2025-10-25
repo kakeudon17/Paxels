@@ -2,10 +2,10 @@
     "format_version": 2,
     "header": {
         "min_engine_version": [1, 21, 90],
-        "name": "Paxels_BP v1.1.1",
+        "name": "Paxels_BP v1.1.2",
         "description": "pack.description",
         "uuid": "5ba9753c-ccd9-4d87-ae20-a62eddc22903",
-        "version": [1, 1, 1]
+        "version": [1, 1, 2]
     },
     "modules": [
         {
@@ -13,13 +13,13 @@
             "language": "javascript",
             "entry": "main.js",
             "uuid": "caa73b28-555f-46ac-830a-e42eb732e878",
-            "version": [1, 1, 1]
+            "version": [1, 1, 2]
         }
     ],
     "dependencies": [
         {
             "uuid": "79f71935-569f-4446-a955-6ccc654e37ba",
-            "version": [1, 1, 1]
+            "version": [1, 1, 2]
         },
         {
             "module_name": "@minecraft/server",

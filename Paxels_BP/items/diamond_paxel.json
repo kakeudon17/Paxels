@@ -27,12 +27,12 @@
                 ]
             },
             "minecraft:durability": {
-                "max_durability": 2341
+                "max_durability": 3122
             },
             "minecraft:display_name": {
                 "value": "paxels:diamond_paxel.name"
             },
-            "minecraft:damage": 7,
+            "minecraft:damage": 6,
             "minecraft:repairable": {
                 "repair_items": [
                     {

@@ -46,6 +46,10 @@
                 "tags": [
                     "paxel:durability",
                     "minecraft:digger",
+                    "minecraft:is_tool",
+                    "minecraft:is_axe",
+                    "minecraft:is_pickaxe",
+                    "minecraft:is_shovel",
                     "minecraft:netherite_tier"
                 ]
             }

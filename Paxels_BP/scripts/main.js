@@ -52,11 +52,11 @@ function decreaseDurability(player) {
         const t = Math.floor(Math.random() * 100);
 
         if (t < durability.getDamageChance()) {
-            durability.damage += 1;
-            if (durability.damage >= durability.maxDurability) {
+            if (durability.maxDurability - durability.damage <= 0) {
                 player.playSound("random.break");
                 slot.setItem();
             } else {
+                durability.damage += 1;
                 slot.setItem(item);
             }
         }

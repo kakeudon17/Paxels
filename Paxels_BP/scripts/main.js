@@ -1,13 +1,5 @@
-import { system, world } from '@minecraft/server';
+import { system, world, GameMode } from "@minecraft/server";
 
-const grass_paths = [
-    "minecraft:grass_block",
-    "minecraft:podzol",
-    "minecraft:mycelium",
-    "minecraft:dirt",
-    "minecraft:coarse_dirt",
-    "minecraft:dirt_with_roots"
-];
 const logs = [
     "minecraft:oak_log",
     "minecraft:spruce_log",
@@ -31,11 +23,21 @@ const logs = [
     "minecraft:mangrove_wood",
     "minecraft:cherry_wood",
     "minecraft:pale_oak_wood",
-    "minecraft:bamboo_block"
+    "minecraft:bamboo_block",
 ];
 
+const blockSounds = {
+    "minecraft:cherry_log": "step.cherry_wood",
+    "minecraft:cherry_wood": "step.cherry_wood",
+    "minecraft:bamboo_block": "step.bamboo_wood",
+    "minecraft:crimson_stem": "use.stem",
+    "minecraft:warped_stem": "use.stem",
+    "minecraft:crimson_hyphae": "use.stem",
+    "minecraft:warped_hyphae": "use.stem",
+};
+
 function isCreativeMode(player) {
-    return player.getGameMode().includes("Creative");
+    return player.getGameMode() == GameMode.Creative;
 }
 
 function decreaseDurability(player) {
@@ -43,9 +45,11 @@ function decreaseDurability(player) {
     const slot = inv.container.getSlot(player.selectedSlotIndex);
     const item = slot.getItem();
 
-    if (!item?.hasTag("paxel:durability")) return;
+    if (!item?.hasTag("paxel:is_paxel")) return;
 
-    let level = item.getComponent("minecraft:enchantable")?.getEnchantment("unbreaking")?.level;
+    const level = item
+        .getComponent("minecraft:enchantable")
+        ?.getEnchantment("unbreaking")?.level ?? 0;
 
     function durability() {
         const durability = item.getComponent("durability");
@@ -62,91 +66,37 @@ function decreaseDurability(player) {
         }
     }
 
-    if (level > 0) {
-        const chance = Math.random();
-        if (chance < level / (level + 1)) return;
-    }
+    const chance = Math.random();
+    if (chance < level / (level + 1)) return;
     durability();
 }
 
-system.beforeEvents.startup.subscribe(ev => {
-    ev.itemComponentRegistry.registerCustomComponent("paxel:use", {
-        onUseOn: ({ source, block }) => {
-            const blockId = block.type.id;
-            const { x, y, z } = block.location;
+world.beforeEvents.playerInteractWithBlock.subscribe((ev) => {
+    const player = ev.player;
+    const blockId = ev.block.typeId;
 
-            let actionPerformed = false;
+    if (!ev.itemStack?.hasTag("paxel:is_paxel")) return;
 
-            if (grass_paths.includes(blockId)) {
-                const blockAbove = block.dimension.getBlock({ x, y: y + 1, z });
-                if (!blockAbove || blockAbove.type.id === 'minecraft:air') {
-                    source.runCommand(`setblock ${x} ${y} ${z} minecraft:grass_path`);
-                    source.runCommand(`playsound use.grass @s`);
-                    actionPerformed = true;
-                }
-            }
+    let actionPerformed = false;
 
-            if (logs.includes(blockId)) {
-                const blockState = block.permutation.getState("pillar_axis");
-                source.runCommand(`setblock ${x} ${y} ${z} minecraft:stripped_${blockId.split(":")[1]} ["pillar_axis"="${blockState}"]`);
-                source.runCommand(`playsound use.wood @s`);
-                actionPerformed = true;
-            }
+    if (logs.includes(blockId)) {
+        system.run(() => {
+            player.playSound(blockSounds[blockId] ?? "use.wood");
+        });
+        actionPerformed = true;
+    }
 
-            if (blockId === "minecraft:snow_layer") {
-                source.runCommand(`loot spawn ${x} ${y} ${z} mine ${x} ${y} ${z} minecraft:iron_shovel`);
-                source.runCommand(`playsound hit.snow @s`);
-                source.runCommand(`setblock ${x} ${y} ${z} air`);
-                actionPerformed = true;
-            }
-
-            if (blockId.includes("copper") || blockId.includes("lightning_rod")) {
-                function changeCopperState(fromState, toState = '', sound = 'scrape') {
-                    if (blockId.includes(fromState)) {
-                        const newBlockId = blockId.replace(fromState, toState);
-                        source.runCommand(`playsound ${sound} @s`);
-                        return newBlockId;
-                    }
-                    return null;
-                }
-
-                function showEffectParticles() {
-                    for (let i = 0; i < 15; i++) {
-                        const offsetX = (Math.random() - 0.5) * 1.5 + 0.5;
-                        const offsetY = Math.random() * 1.5;
-                        const offsetZ = (Math.random() - 0.5) * 1.5 + 0.5;
-                        source.runCommand(`particle minecraft:wax_particle ${x + offsetX} ${y + offsetY} ${z + offsetZ}`);
-                    }
-                }
-
-                let newBlockId = changeCopperState('waxed_', '', 'copper.wax.off') ||
-                    changeCopperState('oxidized_', 'weathered_') ||
-                    changeCopperState('weathered_', 'exposed_') ||
-                    changeCopperState('exposed_', '');
-
-                if (newBlockId) {
-                    actionPerformed = true;
-                    if (blockId === "minecraft:waxed_copper" || blockId === "minecraft:exposed_copper") {
-                        source.runCommand(`setblock ${x} ${y} ${z} copper_block`);
-                    } else {
-                        const blockStates = block.permutation.getAllStates();
-                        const stateString = Object.entries(blockStates)
-                            .map(([key, value]) => `"${key}"=${typeof value === 'string' ? `"${value}"` : value}`)
-                            .join(',');
-                        source.runCommand(`setblock ${x} ${y} ${z} ${newBlockId} [${stateString}]`);
-                    }
-                    showEffectParticles();
-                }
-            }
-            if (actionPerformed && !isCreativeMode(source)) {
-                decreaseDurability(source);
-            }
-        }
-    });
+    if (actionPerformed && !isCreativeMode(player)) {
+        system.run(() => {
+            decreaseDurability(player);
+        })
+    }
 });
 
-world.afterEvents.playerBreakBlock.subscribe(ev => {
-    if (!isCreativeMode(ev.player)) {
-        decreaseDurability(ev.player);
+world.afterEvents.playerBreakBlock.subscribe((ev) => {
+    const player = ev.player;
+
+    if (!isCreativeMode(player)) {
+        decreaseDurability(player);
     }
 });

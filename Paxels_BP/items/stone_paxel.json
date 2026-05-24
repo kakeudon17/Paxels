@@ -51,10 +51,9 @@
                     }
                 ]
             },
-            "paxel:use": {},
             "minecraft:tags": {
                 "tags": [
-                    "paxel:durability",
+                    "paxel:is_paxel",
                     "minecraft:digger",
                     "minecraft:is_tool",
                     "minecraft:is_axe",
